@@ -74,3 +74,8 @@ learn.fine_tune(3)
 prediction,_,confidence = learn.predict(PILImage.create('data/single/bird.jpg'))
 print(f"This is a: {prediction}.")
 print(f"Confidence it's a bird: {confidence[0]:.4f}")
+
+# Export model
+model_path = Path('models')
+model_path.mkdir(exist_ok=True, parents=True)
+learn.export(model_path/'resnet18.pkl')
