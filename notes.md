@@ -1,9 +1,14 @@
 - SGD, Stochastic Gradient Descent: Simply the process of updating the parameters
 (weights) of a neural net. Specifically using the math formula of ...
     - Book, lesson 1
-- Loss: Measuring model performance. Measuring how many things the model gets correct
-after training. Optimized for SGD to use to update weights
+- Loss
+    - Measuring model performance. Measuring how many things the model gets correct
+    after training. Optimized for SGD to use to update weights
     - Book, lesson 1
+    - Number that is higher when the model is incorrect, even higher when the model is
+    more confident of its incorrect label. Also high when it has a correct label but
+    less confident of the correct label.
+    - Book, lesson 2
 - Metric: Measuring model performance. Function to measure quality of model's
 predictions, printed after each epoch. Optimized for human consumption to have
 visibility into the training of the model and having a feel for how well it's doing.
@@ -15,7 +20,8 @@ visibility into the training of the model and having a feel for how well it's do
     - Loss is for SGD to use to update weights, machine oriented
     - Metric is for humans to understand how model is performing
     - Book, lesson 1
-- Dependent variable: Also known as the targets, labels, correct labels
+- Dependent variable: Also known as the targets, labels, correct labels, y (vertical)
+    - Independent variable is x (horizontal) (Book, lesson 2)
     - Book, lesson 1
 - Fit: Synonym for train.
     - Book, lesson 1
@@ -100,3 +106,31 @@ to use the full dataset, then by all means use full dataset)
 - Hyperparameters: Parameters about parameters. Examples: learning rates, data
 augmentation strategies, network architecture, etc.
     - Book, lesson 1
+- High Cardinality: lots of unique values (zip codes)
+    - Book, lesson 2
+- Not deep learning, but machine learning: random forests, gradient boosting
+    - Book, lesson 2
+- Deep learning can do recommendation systems but has an issue, you buy a book and it
+suggests other forms of that books you already bought (nearly all machine learning
+alorithms for recommendation systems have this issue)
+    - Book, lesson 2
+- NLP is good for dequences of discrete tokens with complex relationships and meaning
+throughout the sequence. Like protein chains.
+    - Book, lesson 2
+- Python tip, map(): list_of_items_variable.map(function) calls the function passed to
+map on each of the items in the list.
+    - Book, lesson 2
+- Confusion Matrix: Plot of the actual labels vs the predicted labels from a model.
+One way of inspecting model performance visually. Only useful when you are predicting
+categories.
+
+Questions:
+Lesson 2: When we get to training the bear image classifier we do this in the code:
+```
+bears = bears.new(
+    item_tfms=RandomResizedCrop(224, min_scale=0.5),
+    batch_tfms=aug_transforms())
+dls = bears.dataloaders(path)
+```
+Shouldn't we put the RandomResizedCrop() in the batch transforms? Why do we have it in
+the item transforms?
