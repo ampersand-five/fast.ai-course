@@ -1,4 +1,4 @@
-- SGD, Stochastic Gradient Descent: Simply the process of updating the parameters
+- Stochastic Gradient Descent, SGD: Simply the process of updating the parameters
 (weights) of a neural net. Specifically using the math formula of ...
     - Book, lesson 1
 - Loss
@@ -9,6 +9,28 @@
     more confident of its incorrect label. Also high when it has a correct label but
     less confident of the correct label.
     - Book, lesson 2
+    - Think of it like fitting a line to a quadratic set of data and when you're off you
+    adjust the quadratic values to line it up better with the data and you keep doing
+    that until it lines up with the data. The loss function is a function to tell you
+    how far the line you're fitting, is, from the actual data. Larger it is, further
+    away from the data the line is. Make it small to fit the data better. Example:
+    https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work
+        - Video, lesson 3, timestamp: 30:00
+    - Different functions you can use for it
+        - Mean Squared Error, mse: ((predictions - actuals)^2).mean()
+            - Always positive, increasingly better as it approaches zero
+- Derivative is the slope of a line at a given point. **ALSO KNOWN AS** the gradient
+- Gradient: derivative, the slope of a line at a given point
+- Gradient Descent: tying together the gradient/derivative concept and the loss concept,
+it's a function that will change parameters to lower the loss which is just using the
+slope the derivative found and following it down until it can get as close to zero and
+bottom out, as it can, for each parameter.
+    - Video, lesson 3, timestamp 33:00
+- Integral is the total area under a line, either in whole or from point to point
+- Rectified Linear (Unit) function, ReLU: linear function but make anything negative just zero
+    - Video, lesson 3, timestamp 33:00
+    - Summing up infinite ReLU's allow you to map to anything in any number of
+    dimensions. This is what neural nets do.
 - Metric: Measuring model performance. Function to measure quality of model's
 predictions, printed after each epoch. Optimized for human consumption to have
 visibility into the training of the model and having a feel for how well it's doing.
@@ -123,6 +145,48 @@ map on each of the items in the list.
 - Confusion Matrix: Plot of the actual labels vs the predicted labels from a model.
 One way of inspecting model performance visually. Only useful when you are predicting
 categories.
+- fast.ai learn.predict() returns: prediction, index of predicted category, and array of
+probabilities the thing is for each category
+    - Class, lesson 2
+- How many epochs to train for? Up to you, watch the error rate and make sure it's not
+getting worse.
+    - Class, lesson 2, timestamp: 53:20
+- Production considerations:
+    - Multiple versions of a model
+    - A/B testing
+    - Canarying
+    - Refreshing data
+    - Growing data
+    - Handling data labeling
+    - Monitoring everything
+    - Detecting model rot
+    - Domain shift: when the data our model sees over time changes and no longer matches
+    what it was trained on
+    - Lots more
+    - Book, lesson 2
+- When deploying to prod, make a slow roll-out paired with all human reviews of
+predictions. Think about how the model could go wrong. A bear detection model trained
+on a Google image search will not be able to recognize the bears seen in security
+cameras around a camp. The images will be vastly different, framing, coloring,
+bluriness, resolution, etc. Roll out model to just one camp, instead of all. Have the
+model initially just highlight bears in red for a park ranger to then review. Have
+reporting, like bear sightings doubled or halved at a park after putting the model in.
+These would be signs that something might be wrong.
+    - Book, lesson 2
+- Convnext_<size> image models are as of 2022 great image models to use
+    - Video, lesson 3, timestamp: 18:50
+- Tensor: Array. But doesn't just work with numbers, also works with vectors of numbers
+(other lits/arrays)
+    - Can have multidimensional
+        - 1-D tensor is just an array
+        - 2-D tensor is rectangle of numbers or a table of numbers
+        - 3-D tensor is layers of tables of numbers
+        - etc.
+        - Also called ranks instead of 1D,2D,3D -> Rank 1 tensor, Rank 2 tensor, etc.
+
+    - Video, lesson 3, timestamp: 36:00
+
+
 
 Questions:
 Lesson 2: When we get to training the bear image classifier we do this in the code:
