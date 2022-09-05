@@ -34,6 +34,16 @@ just zero. Just a simple quadratic y=mx+b function.
     - Summing up infinite ReLU's allow you to map to anything in any number of
     dimensions. This is what neural nets do. The linear functions are y=mx+b format.
         - Video, lesson 3, timestamp 43:00
+- Learning Rate: 
+    - Used in gradient descent. After you get the gradient values of the
+    random coefficients, (negative gradients mean you should increase the coefficient,
+    positive gradients mean you should decreaese the coefficient), you can [subtract from the
+    coefficients the [gradient values times the learning rate]]: coeffs-(gradients*LR)
+        - Video, lesson 5, timestamp 40:00
+    - How quickly or slowly you want the model to change it's coefficient values. Too
+    small and it will take forever to learn, too large and you will overshoot (diverge)
+    the value you're trying to reach and never get it.
+
 - Feature engineering example: video lesson 3, timestamp: 1:04:29
 - Metric: Measuring model performance. Function to measure quality of model's
 predictions, printed after each epoch. Optimized for human consumption to have
@@ -50,8 +60,9 @@ visibility into the training of the model and having a feel for how well it's do
     - Loss is for SGD to use to update weights, machine oriented
     - Metric is for humans to understand how model is performing
     - Book, lesson 1
-- Dependent variable: Also known as the targets, labels, correct labels, y (vertical)
-    - Independent variable is x (horizontal) (Book, lesson 2)
+- Dependent variable(s): Also known as the targets, labels, correct labels, y (vertical).
+The variable you're trying to predict. Think: It's dependent on you predicting it.
+    - Independent variable(s) is x (horizontal) (Book, lesson 2).
     - Book, lesson 1
 - Fit: Synonym for train.
     - Book, lesson 1
