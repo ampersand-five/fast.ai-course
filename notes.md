@@ -24,19 +24,27 @@
 - Gradient Descent: tying together the gradient/derivative concept and the loss concept,
 it's a function that will change parameters to lower the loss which is just using the
 slope the derivative found and following it down until it can get as close to zero and
-bottom out, as it can, for each parameter.
+bottom out, as it can, for each parameter, which in turn means that you've minimized the
+loss and come as close as you can to fitting the function/neural net to the data/task.
     - Video, lesson 3, timestamp 33:00
 - Integral is the total area under a line, either in whole or from point to point
-- Rectified Linear (Unit) function, ReLU: linear function but make anything negative just zero
+- Rectified Linear (Unit) function, ReLU: linear function but make anything negative
+just zero. Just a simple quadratic y=mx+b function.
     - Video, lesson 3, timestamp 33:00
     - Summing up infinite ReLU's allow you to map to anything in any number of
-    dimensions. This is what neural nets do.
+    dimensions. This is what neural nets do. The linear functions are y=mx+b format.
+        - Video, lesson 3, timestamp 43:00
+- Feature engineering example: video lesson 3, timestamp: 1:04:29
 - Metric: Measuring model performance. Function to measure quality of model's
 predictions, printed after each epoch. Optimized for human consumption to have
 visibility into the training of the model and having a feel for how well it's doing.
     - Error Rate: percentage of values being predicted/classified correctly
     - Accuracy: 1.0 - error_rate
     - Book, lesson 1
+    - fast.ai/2019/09/24/metrics/
+    - Examples:
+        - Pearson Correlation Coefficient
+            - Video lesson 4, timestamp: 1:04:12
 - Loss vs Metric
     - Close, but different. Can be the same function used for both, or not.
     - Loss is for SGD to use to update weights, machine oriented
@@ -185,8 +193,7 @@ These would be signs that something might be wrong.
         - Also called ranks instead of 1D,2D,3D -> Rank 1 tensor, Rank 2 tensor, etc.
 
     - Video, lesson 3, timestamp: 36:00
-
-
+- Validation Sets: fast.ai/2017/11/13/validation-sets/
 
 Questions:
 Lesson 2: When we get to training the bear image classifier we do this in the code:
