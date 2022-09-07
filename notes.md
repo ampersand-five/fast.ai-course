@@ -103,6 +103,19 @@ was origially trained on
         performance" used for training the model), and any metrics you've requested
         (error rate for images usually, or other).
     - Book, lesson 1
+    - Also known as hidden layers, how many epochs is how many hidden layers
+        - Each set of multiplying the coefficents by the values and summing it up
+        - Video, lesson 5, timestamp: 1:04:40, 1:08:00
+- The term "hidden layers" and "layer" both seem to be used for a couple purposes:
+
+    Layer:
+    - Each individual activation
+    - Each individual epoch
+
+    Hidden Layers:
+    - The number of activations in each layer
+    - The number of epochs
+
 - Parameters: aka weights. Can be weights or .... The values the model updates to get
 better accuracy.
     - Book, lesson 1
@@ -202,10 +215,34 @@ These would be signs that something might be wrong.
         - 3-D tensor is layers of tables of numbers
         - etc.
         - Also called ranks instead of 1D,2D,3D -> Rank 1 tensor, Rank 2 tensor, etc.
-
+        - Scalar is Rank 0 (just one number, x=tensor(2.0) is a scalar) || [1]
+        - Vector is Rank 1 [1,1,1,1]
+        - Matrix is Rank 2 [[1,1,1,1],
+                            [1,1,1,1]]
+        - Others are just referred to by rank
     - Video, lesson 3, timestamp: 36:00
+- Neural net: using multiple column vectors of coefficients, aka activations, in one
+epoch
+    - Deep learning model: using multiple epochs where each epoch has many activations
+- Activations: The arrays of coefficients we're multiplying into the data. Each column
+vector of coefficients is one activation. More of them are activations.
+    - Video, lesson 5, timestamp: 1:04:00
+- Activation functions: the ReLU and Sigmoid functions we add at the end to clean up
+the matrix multiplications we just finished doing.
+    - Reminder: ReLU makes all negatives into 0, Sigmoid moves all predictions into a
+    defined range, like 0 to 1, or -1 to 1, or 0 to 100.
+    - Video, lesson 5, timestamp: 1:11:00
 - Validation Sets: fast.ai/2017/11/13/validation-sets/
-
+- When you have a binary, dependent variable, the final step that helps a lot is to put
+it through a Sigmoid function.
+    - Function: 1/(1+exp(-x)), one over one e to the negative x
+    - Video, lesson 5, timestamp: 53:20
+- The neural net and deep learning models didn't make much of a difference in the
+Titanic dataset. This was because that data was small and tabular. Generally, you can
+chuck a deep learning model at image and NLP problems and get a great result. But
+tabular data isn't so easy. Pre-trained models don't exist for tabular data because they
+are all unique and you have to think about the feature engineering for the data, a lot
+more.
 Questions:
 Lesson 2: When we get to training the bear image classifier we do this in the code:
 ```
