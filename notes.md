@@ -243,6 +243,17 @@ chuck a deep learning model at image and NLP problems and get a great result. Bu
 tabular data isn't so easy. Pre-trained models don't exist for tabular data because they
 are all unique and you have to think about the feature engineering for the data, a lot
 more.
+- Do something simple first on data like random forests to get a base line to compare
+deep learning models to
+
+
+
+
+
+
+
+
+
 Questions:
 Lesson 2: When we get to training the bear image classifier we do this in the code:
 ```
