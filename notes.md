@@ -245,7 +245,15 @@ are all unique and you have to think about the feature engineering for the data,
 more.
 - Do something simple first on data like random forests to get a base line to compare
 deep learning models to
-
+- OneR: One Rule
+    - Machine learning model.
+    - A classifier that classifies based on just one attribute.
+    - In the Titanic example it's like predicting survival using just the gender of the
+    passengers. It was found to be one of the best machine learning classifiers for a
+    wide range of real world datasets. Meaning, you should always make a OneR model as a
+    baseline to compare to before getting more complicated things going.
+    - A decision tree with a single binary split.
+    - Video, lesson 5, timestamp: 1:42:48
 
 
 
