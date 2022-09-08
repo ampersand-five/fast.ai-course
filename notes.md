@@ -262,23 +262,86 @@ deep learning models to
         outliers
     - Video, lesson 6, timestamp 13:00
     - Categorical variables tend to work fine as numbers in decision trees
-- Random Forrest classifier:
+- Random Forest classifier:
     - Ensemble of decision trees
     - Uses the average of their predictions, called bagging
+        - Bagging is ensembling. It's just combining models of any kind (not just
+        decision trees) and taking the average of the predictions from all the models.
+            - Video, lesson 6, timestamp: 30:00
+        - The Out of Bag Error, OoB Error: average of the accuracy of the prediction of
+        rows when they were not part of the training data.
+            - Video, lesson 6, timestamp: 30:00
+    - 100 trees is usually enough
+        - More trees gets more accuracy, but when you deploy the model, inferences have
+        to traverse all the trees, so it gets slower.
+        - Adding more trees however does not make the this model over fit!
+            - Not having enough trees and the ones you do have are very deep can cause
+            this model to overfit.
+                - - Video, lesson 6, timestamp: 47:03
+    - You don't have to worry about interactions with random forest models
+    - Very hard to mess up, great to use. Work especially well on tabular data.
     - If the models are not correlated to each other, then the outcome for each decision
     tree will fall on a bell curve centered around the right answer. Some predictions
     will be too low and some predictions will be too high. But the average of all of
     the predictions will be zero, aka, the right answer.
         - Video, lesson 6, timestamp: 18:32
+- Gradient Boosting models, GBM: explained.ai/gradient-boosting
+    - Like Random Forest models, rather tha fitting a tree over and over on random
+    subsets of the data, you fit small trees, like OneR or TwoR trees, and then say:
+    what's the error? Then you take the residual, the difference between the prediction
+    and the actual (which is the error), and you make another tree that attempts to
+    predict that error. And you then take the residual again from the second one and
+    make a third tree the predict the error for that, and so on. At the end, rather than
+    the average, you take the sum of all the predictions. Because each one has predicted
+    the difference between the actual and all of the previous trees. Each one is
+    predicting the residual from all the previous ones.
+        - This is called boosting, versus random forests do bagging
+            - Boosting and bagging are two kind of ensembling techniques
+                - Bagging applied to trees is random forests
+                - Boosting applied to trees is called Gradient Boosting Machine or
+                Gradient Boosted Decision Trees
+    - Generally speaking, more accurate than random forests, but you can definitely
+    overfit the model. So it's not the best first pass thing to go to. And it won't
+    necesarily get you a large improvement either. Could, but could just be a minor
+    improvement.
+    - Video, lesson 6, timestamp: 49:00
+- Test time augmentation, tta: augmenting the data you're predicting on.
+It will crop, darken, zoom and otherwise change singular photos to make multiple
+versions of that photo, then do a prediction on all of them and average the result.
+    - Video, lesson 6, timestamp: 1:30:00
+- You can ensemble a bunch of neural net architectures for images and then search
+through them and pick the result that had the highest confidence.
+    - Video 7, timestamp: 22:00
+- K-fold cross validation: Rather than using a random subset of the data for training,
+use all but the first 20% of the data, then again except all but the second 20% of data,
+and so on.
+    - In theory seems nice, in practice it's more work when trying multiple models to
+    make sure you are using the same set of non-overlapping data when training.
+- Gradient Accumulation: Training in batches and summing them up. Allows you to use
+arbitralily large data on a limited GPU with only so much RAM.
+    - Video 7, timestamp: 8:12
+    -Some models might break if you use gradient accumulation, most work fine with it.
 
 
-
-
+- Rules of thumb:
+    - Neural nets are good for images and NLP
+    - For tabular data, random forests are going to be the fastest easiest way to get good
+    results, GBM will give a slightly better result if you need it and have time to mess
+    with it
+    - Want 8-ish CPU's per GPU
+    - Machine Learning is changing fast, you need to keep up with it. Convnext models
+    have replaced Resnet models in 2022. Future something else will replace Convnext.
+    - When padding images for deep learning, turns out that padding with black bars
+    actually tends to work best. Versus reflection, or noise, or copy, or other options.
+    - If you're doing small batches rather than full size ones to fit everything on the
+    GPU, you also want to divide your learning rate by the same amount. It's not exactly
+    linear like that, but you can shrink it with the smaller batch size
 
 
 
 Questions:
-Lesson 2: When we get to training the bear image classifier we do this in the code:
+Video, lesson 2: When we get to training the bear image classifier we do this in the
+code:
 ```
 bears = bears.new(
     item_tfms=RandomResizedCrop(224, min_scale=0.5),
@@ -287,3 +350,21 @@ dls = bears.dataloaders(path)
 ```
 Shouldn't we put the RandomResizedCrop() in the batch transforms? Why do we have it in
 the item transforms?
+A: Everything in a batch has to be the same shape, so resizing needs to happen to make
+everything all the same size first before you can do any batch operations.
+    - Video lesson 6, timestamp: 1:04:00
+
+
+Next:
+- Finish video lesson 7, left off at timestamp: 36:28
+- Run through the 'Scaling Up: Road to the Top' series from Jeremy Howard on Kaggle
+    - Will give good practice and will go over
+        - Making smaller batches so you can fit large things on a GPU when they don't
+        fit all at once
+        - How to do two classifications on an image (type of disease and type of rice)
+- Maybe skip video lesson 8? It goes over convolutions, don't need at the moment, I just
+want to focus on tabular data. But it would be good to come back to it and watch it at
+some point.
+- Watch video lesson 9, which for some reason isn't in the playlist. It's on Data
+Ethics.
+- Go through the book. Left off where I finished chapter 2. Start with chapter 3.
