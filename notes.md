@@ -253,8 +253,23 @@ deep learning models to
     wide range of real world datasets. Meaning, you should always make a OneR model as a
     baseline to compare to before getting more complicated things going.
     - A decision tree with a single binary split.
+    - TwoR model is two rules, or two splits instead of one.
     - Video, lesson 5, timestamp: 1:42:48
-
+- Decision Tree classifier:
+    - A bunch of binary splits of the data to predict outcomes.
+    - Only cares about ordering of the data
+        - Does not need things normalized like the log of stuff and is not affected by
+        outliers
+    - Video, lesson 6, timestamp 13:00
+    - Categorical variables tend to work fine as numbers in decision trees
+- Random Forrest classifier:
+    - Ensemble of decision trees
+    - Uses the average of their predictions, called bagging
+    - If the models are not correlated to each other, then the outcome for each decision
+    tree will fall on a bell curve centered around the right answer. Some predictions
+    will be too low and some predictions will be too high. But the average of all of
+    the predictions will be zero, aka, the right answer.
+        - Video, lesson 6, timestamp: 18:32
 
 
 
